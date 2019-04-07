@@ -10,8 +10,7 @@
         "default_title": "ethicalCompass"
     },
     "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "all_frames": true,
+        "matches": ["https://www.asos.com/*"],
         "js":      ["scripts/content.js"]
     }],
     "permissions": [

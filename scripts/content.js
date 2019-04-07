@@ -1,13 +1,23 @@
-chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
-    //onMessage receives data from the extension and addListener says what to do on detection of this event
-    //sendResponse just says if successful or not
-    console.log("something happening from the extension");
-    var data = request.data || {};
-    console.log("this is the " + data)
-    var linksList = document.querySelectorAll('a');
-    [].forEach.call(linksList, function(header) {
-
-        header.innerHTML = request.data;
+window.onload=function(){
+  let webbrands=[];
+   var linksList = document.querySelectorAll('[id^=product-]');
+      linksList.forEach(function(header) {
+      let brand=header.textContent.split(" ")[0];
+      if(brand==='ASOS'){
+        webbrands.push(brand);
+        console.log('header',header);
+        header.toggle("wellspent")
+        header.style["border-color"] = "red";
+      }
     });
-    sendResponse({data: data, success: true});
-});
+    console.log("Brands",webbrands);
+  const url=`https://wellspentethecal.herokuapp.com/api/brand/ASOS`;
+   fetch(url)
+      .then(function(response) {
+        // return response.json();
+        console.log("resss",response.json());
+      })
+      .then(function(myJson) {
+        console.log(JSON.stringify(myJson));
+      });
+    }

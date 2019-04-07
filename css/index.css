@@ -10,13 +10,16 @@
 			text-align:center;
 			line-height:200px;
 		}
-
-.active{
+.wellspent{
+  border-width:3px;
+  border-style:solid;
+}
+/* .active{
   background-color:blue;
   border:red;
   border-width: 2px;
   border-style: solid;
-}
+} */
 
 .product{
   /* background-color:blue; */
