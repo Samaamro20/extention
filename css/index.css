@@ -16,14 +16,14 @@
 }
 /* .active{
   background-color:blue;
-  border:red;
+  border:green;
   border-width: 2px;
   border-style: solid;
 } */
 
 .product{
   /* background-color:blue; */
-  border:red;
+  border:blue;
   border-width: 5px;
   border-style: solid;
   display: inline-block;
