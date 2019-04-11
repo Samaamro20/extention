@@ -30,23 +30,87 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
     });
     const filteredBrand = Promise.all(finalResult)
     .then((res)=>{
-        res.map(brand => {
+        res.map((brand,index, array) => {
           if(brand.length > 0){
           linksList.forEach(function(product) {
             const node = product.childNodes[0];
             const label = node.getAttribute("aria-label");
             let webbrand = label.split(" ")[0];
             if(brand[0] === webbrand){
-                product.classList.toggle("wellspent");
-                console.log("sss",resp[0]["OverallScoreColour"][0]);
-                product.style["border-color"] = resp[0]["OverallScoreColour"][0];
-
+                // product.classList.toggle("wellspent");
+                product.style["border-color"] =resp[index]["OverallScoreColour"][0];
+                product.style["border-width"] ='3px';
+                product.style["border-style"] ='solid';
+                product.style["padding"] ='5px';
                 var button = document.createElement("button");
                 button.innerText = "More information";
+                button.style["border-radius"]= '3px';
+                button.style["font-size"]= '12pt';
+                button.style["margin-left"]= '25%';
+                button.setAttribute("id", "btn");
                 product.appendChild(button);
+
+                /////////////////////
+                // console.log("sama",button);
+                var span =document.createElement("span");
+                var myModal =document.createElement("div");
+
+                if(button){
+                button.onclick = function() {
+                  myModal.classList.add('popup');
+                  myModal.style["position"]=" fixed";
+                  myModal.style["z-index"]=" 1";
+                  myModal.style["left"]=" 0";
+                  myModal.style["top"]=" 0";
+                  myModal.style["width"]="100%";
+                  myModal.style["height"]="100%";
+                  myModal.style["background-color"]="#F1F1F1";
+                  myModal.style["background-color"]=" rgba(0,0,0,0.4)";
+                  myModal.style["-webkit-animation-name"]=" fadeIn";
+                  myModal.style["-webkit-animation-duration"]=" 0.4s";
+                  myModal.style["animation-name"]="fadeIn";
+                  myModal.style["animation-duration"]="0.4s";
+                  myModal.setAttribute("id", "myModal");
+                  var content =document.createElement("div");
+                  content.classList.add('popup-content');
+                  var header =document.createElement("div");
+                  header.classList.add('popup-header');
+                  span.classList.add('end');
+                  span.innerText="XXXXXX";
+                  var score=document.createElement('h1');
+                  score.innerText="Brand Scores";
+                  score.classList.add('title');
+                  var LaborScore=document.createElement('h2');
+                  LaborScore.innerText="LaborScore: " + resp[0].LaborScore;
+                  var EnvironmentScore=document.createElement('h3');
+                  EnvironmentScore.innerText=" EnvironmentScore: " + resp[0].EnvironmentScore;
+                  var OverallScore=document.createElement('h4');
+                  OverallScore.innerText= " OverallScore: " + resp[0].OverallScore;
+
+                  myModal.appendChild(content);
+                  content.appendChild(header);
+                  content.appendChild(span);
+                  content.appendChild(score);
+                  content.appendChild(LaborScore);
+                  content.appendChild(EnvironmentScore);
+                  content.appendChild(OverallScore);
+
+                  document.body.appendChild(myModal);
+                  myModal.style.display = "block";
+                    }}
+                span.onclick = function() {
+                      myModal.style.display = "none";
+                    }
+                window.onclick = function(event) {
+                      if (event.target == myModal) {
+                      myModal.style.display = "none";
+                      }
+                    }
+
+                //////////////////////////
+
             }
           });
-
       }})
     });
   })

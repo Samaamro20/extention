@@ -1,62 +1,30 @@
-#actionButton{
-  color: white;
-  padding: 15px 32px;
-  background-color: black;
+.title{
+  text-align: center;
 }
 
-#popup{
-			width:300px;
-			height:200px;
-			text-align:center;
-			line-height:200px;
-		}
-
-.wellspent{
-  border-width:3px;
-  border-style:solid;
-}
-/* .active{
-  background-color:blue;
-  border:green;
-  border-width: 2px;
-  border-style: solid;
-} */
-
-.product{
-  /* background-color:blue; */
-  border:blue;
-  border-width: 5px;
-  border-style: solid;
-  display: inline-block;
-}
-
-
-/* ////////////////////////////// */
 .popup {
-           display: none;
-           position: fixed;
+           padding: 30px;
            z-index: 1;
            left: 0;
-           top: 0;
-           width: 100%;
-           height: 100%;
+           top: 20%;
+           width: 600px;
+           height: 500px;
            background-color: #F1F1F1;
            background-color: rgba(0,0,0,0.4);
            -webkit-animation-name: fadeIn;
            -webkit-animation-duration: 0.4s;
            animation-name: fadeIn;
-           animation-duration: 0.4s
+           animation-duration: 0.4s;
+           font-size: 20pt;
         }
         .popup-content {
-           position: fixed;
-           bottom: 0;
+          padding: 30px;
            background-color: #ffffff;
-           width: 100%;
+           width: 80%;
            -webkit-animation-name: slideIn;
            -webkit-animation-duration: 0.5s;
            animation-name: slideIn;
            animation-dposition: fixed;
-           bottom: 0;
            background-color: #ffffff;
            width: 100%;
            -webkit-animation-name: slideIn;
@@ -67,7 +35,7 @@
         .end {
            color: white;
            float: right;
-           font-size: 15px;
+           font-size: 15pt;
            font-weight: bold;
         }
         .end:hover,
