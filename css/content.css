@@ -1,3 +1,18 @@
+.ls{
+margin: 20px !important;
+padding-left: 30%;
+
+}
+.es{
+  margin: 20px !important;
+  padding-left: 30%;
+
+}
+.os{
+  margin: 20px !important;
+  padding-left: 30%;
+}
+
 .product{
   border-width:3px;
   border-style:solid;
@@ -16,7 +31,7 @@
   -webkit-animation-duration: 0.4s;
   animation-name:fadeIn;
   animation-duration:0.4s;
-  font-size: 20pt;
+  font-size: 15pt;
 }
 
 #btn{
@@ -31,17 +46,32 @@
   padding: 10px;
   font-family: "Roboto", sans-serif;
 }
+.brandpage{
+  font-family: "Roboto", sans-serif;
+  color: steelblue !important;
+  padding-left: 30%;
+
+}
+
+.scoret{
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
 
 .score{
   text-align: center;
-  padding: 10px;
   font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5% !important;
 }
         .popup-content {
           padding: 30px;
           margin-left: 25%;
+          margin-right: 10% !important;
            background-color: #ffffff;
            max-width: 40% !important;
+           height: 40%;
            -webkit-animation-name: slideIn;
            -webkit-animation-duration: 0.5s;
            animation-name: slideIn;
@@ -68,6 +98,7 @@
            padding: 1px 10px;
            background-color: #8AC1E0;
            color: white;
+           margin: 10px;
         }
         .popup-body {padding: 1px 5px;}
         @-webkit-keyframes slideIn {
