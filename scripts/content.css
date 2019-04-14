@@ -1,0 +1,81 @@
+#btn{
+  background-color: white !important;
+  border-radius: 10px !important;
+  font-size: 13pt !important;
+}
+
+.title{
+  text-align: center;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.score{
+  text-align: center;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+}
+.popup {
+           padding: 30px;
+           z-index: 1;
+           left: 0;
+           top: 20%;
+           width: 600px;
+           height: 500px;
+           background-color: #F1F1F1;
+           background-color: rgba(0,0,0,0.4);
+           -webkit-animation-name: fadeIn;
+           -webkit-animation-duration: 0.4s;
+           animation-name: fadeIn;
+           animation-duration: 0.4s;
+           font-size: 20pt;
+        }
+        .popup-content {
+          padding: 30px;
+          margin-left: 25%;
+           background-color: #ffffff;
+           max-width: 40% !important;
+           -webkit-animation-name: slideIn;
+           -webkit-animation-duration: 0.5s;
+           animation-name: slideIn;
+           animation-dposition: fixed;
+           background-color: #ffffff;
+           -webkit-animation-name: slideIn;
+           -webkit-animation-duration: 0.5s;
+           animation-name: slideIn;
+           animation-duration: 0.5suration: 0.5s
+        }
+        .end {
+           color: black;
+           float: right;
+           font-size: 15pt;
+           font-weight: bold;
+        }
+        .end:hover,
+        .end:focus {
+           color: #000;
+           text-decoration: underline;
+           cursor: pointer;
+        }
+        .popup-header {
+           padding: 1px 10px;
+           background-color: #8AC1E0;
+           color: white;
+        }
+        .popup-body {padding: 1px 5px;}
+        @-webkit-keyframes slideIn {
+           from {bottom: -300px; opacity: 0}
+           to {bottom: 0; opacity: 1}
+        }
+        @keyframes slideIn {
+           from {bottom: -300px; opacity: 0}
+           to {bottom: 0; opacity: 1}
+        }
+        @-webkit-keyframes fadeIn {
+           from {opacity: 0}
+           to {opacity: 1}
+        }
+        @keyframes fadeIn {
+           from {opacity: 0}
+           to {opacity: 1}
+        }

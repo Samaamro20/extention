@@ -11,7 +11,8 @@
     },
     "content_scripts": [{
         "matches": ["https://www.asos.com/*"],
-        "js":      ["scripts/content.js"]
+        "js":      ["scripts/content.js"],
+        "css":["scripts/content.css"]
     }],
     "permissions": [
         "activeTab"
