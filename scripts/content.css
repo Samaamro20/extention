@@ -1,7 +1,14 @@
 .title{
   text-align: center;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
 }
 
+.score{
+  text-align: center;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+}
 .popup {
            padding: 30px;
            z-index: 1;
@@ -19,21 +26,21 @@
         }
         .popup-content {
           padding: 30px;
+          margin-left: 25%;
            background-color: #ffffff;
-           width: 80%;
+           max-width: 40% !important;
            -webkit-animation-name: slideIn;
            -webkit-animation-duration: 0.5s;
            animation-name: slideIn;
            animation-dposition: fixed;
            background-color: #ffffff;
-           width: 100%;
            -webkit-animation-name: slideIn;
            -webkit-animation-duration: 0.5s;
            animation-name: slideIn;
            animation-duration: 0.5suration: 0.5s
         }
         .end {
-           color: white;
+           color: black;
            float: right;
            font-size: 15pt;
            font-weight: bold;
