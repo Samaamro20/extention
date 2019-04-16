@@ -75,6 +75,21 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   LaborScoret.classList.add('scoret');
                   LaborScoret.innerText=" LaborScore "
 
+                  //TransparencyScore
+                  var TS=document.createElement('div');
+                  TS.classList.add('ls');
+
+                  var TransparencyScore=document.createElement('span');
+                  TransparencyScore.classList.add('score');
+                  TransparencyScore.innerText=resp.result[index].TransparencyScore;
+                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+
+
+                  var TransparencyScoret=document.createElement('span');
+                  TransparencyScoret.classList.add('scoret');
+                  TransparencyScoret.innerText=" TransparencyScore "
+
+
                   //EnvironmentScore
                   var ES=document.createElement('div');
                   ES.classList.add('es');
@@ -94,7 +109,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   OS.classList.add('os');
 
                   var OverallScore=document.createElement('span');
-                  OverallScore.classList.add('score');
+                  OverallScore.classList.add('scoreo');
                   OverallScore.innerText=resp.result[index].OverallScore;
                   OverallScore.style["background-color"] =resp.colourMap[resp.result[index].OverallScore];
 
@@ -117,16 +132,20 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   content.appendChild(score);
                   content.appendChild(header);
 
-                  LS.appendChild(LaborScore);
-                  LS.appendChild(LaborScoret);
-                  ES.appendChild(EnvironmentScore);
-                  ES.appendChild(EnvironmentScoret);
                   OS.appendChild(OverallScore);
                   OS.appendChild(OverallScoret);
+                  ES.appendChild(EnvironmentScore);
+                  ES.appendChild(EnvironmentScoret);
+                  LS.appendChild(LaborScore);
+                  LS.appendChild(LaborScoret);
+                  TS.appendChild(TransparencyScore);
+                  TS.appendChild(TransparencyScoret);
 
-                  content.appendChild(LS);
-                  content.appendChild(ES);
+
                   content.appendChild(OS);
+                  content.appendChild(ES);
+                  content.appendChild(LS);
+                  content.appendChild(TS);
 
                   content.appendChild(brandpage);
 
