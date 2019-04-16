@@ -1,7 +1,44 @@
+.ls{
+margin: 20px !important;
+padding-left: 30%;
+
+}
+.es{
+  margin: 20px !important;
+  padding-left: 30%;
+
+}
+.os{
+  margin: 20px !important;
+  padding-left: 30%;
+}
+
+.product{
+  border-width:3px;
+  border-style:solid;
+  padding: 5px;
+}
+.myModal{
+  position: fixed;
+  padding: 30px;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:#F1F1F1;
+  background-color: rgba(0,0,0,0.4);
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name:fadeIn;
+  animation-duration:0.4s;
+  font-size: 15pt;
+}
+
 #btn{
   background-color: white !important;
   border-radius: 10px !important;
   font-size: 13pt !important;
+  margin-left:25%;
 }
 
 .title{
@@ -9,32 +46,32 @@
   padding: 10px;
   font-family: "Roboto", sans-serif;
 }
+.brandpage{
+  font-family: "Roboto", sans-serif;
+  color: steelblue !important;
+  padding-left: 30%;
+
+}
+
+.scoret{
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
 
 .score{
   text-align: center;
-  padding: 10px;
   font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5% !important;
 }
-.popup {
-           padding: 30px;
-           z-index: 1;
-           left: 0;
-           top: 20%;
-           width: 600px;
-           height: 500px;
-           background-color: #F1F1F1;
-           background-color: rgba(0,0,0,0.4);
-           -webkit-animation-name: fadeIn;
-           -webkit-animation-duration: 0.4s;
-           animation-name: fadeIn;
-           animation-duration: 0.4s;
-           font-size: 20pt;
-        }
         .popup-content {
           padding: 30px;
           margin-left: 25%;
+          margin-right: 10% !important;
            background-color: #ffffff;
            max-width: 40% !important;
+           height: 40%;
            -webkit-animation-name: slideIn;
            -webkit-animation-duration: 0.5s;
            animation-name: slideIn;
@@ -61,6 +98,7 @@
            padding: 1px 10px;
            background-color: #8AC1E0;
            color: white;
+           margin: 10px;
         }
         .popup-body {padding: 1px 5px;}
         @-webkit-keyframes slideIn {

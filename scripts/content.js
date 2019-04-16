@@ -22,7 +22,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
   .then(contents => {
     resp = JSON.parse(contents);
     brands = resp;
-    const finalResult = brands.map((data)=>{
+    const finalResult = brands.result.map((data)=>{
     const result =   webbrands.filter((wellspentBrand)=>{
         return wellspentBrand===data.BrandName
       })
@@ -37,39 +37,19 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
             const label = node.getAttribute("aria-label");
             let webbrand = label.split(" ")[0];
             if(brand[0] === webbrand){
-                // product.classList.toggle("wellspent");
-                product.style["border-color"] =resp[index]["OverallScoreColour"][0];
-                product.style["border-width"] ='3px';
-                product.style["border-style"] ='solid';
-                product.style["padding"] ='5px';
+                product.style["border-color"] =resp.colourMap[resp.result[index].OverallScore];
+                product.classList.add('product');
                 var button = document.createElement("button");
                 button.innerText = "More information";
-                button.style["border-radius"]= '3px';
-                button.style["font-size"]= '12pt';
-                button.style["margin-left"]= '25%';
                 button.setAttribute("id", "btn");
                 product.appendChild(button);
 
-                /////////////////////
-                // console.log("sama",button);
                 var span =document.createElement("span");
                 var myModal =document.createElement("div");
 
                 if(button){
                 button.onclick = function() {
-                  myModal.classList.add('popup');
-                  myModal.style["position"]=" fixed";
-                  myModal.style["z-index"]=" 1";
-                  myModal.style["left"]=" 0";
-                  myModal.style["top"]=" 0";
-                  myModal.style["width"]="100%";
-                  myModal.style["height"]="100%";
-                  myModal.style["background-color"]="#F1F1F1";
-                  myModal.style["background-color"]=" rgba(0,0,0,0.4)";
-                  myModal.style["-webkit-animation-name"]=" fadeIn";
-                  myModal.style["-webkit-animation-duration"]=" 0.4s";
-                  myModal.style["animation-name"]="fadeIn";
-                  myModal.style["animation-duration"]="0.4s";
+                  myModal.classList.add('myModal');
                   myModal.setAttribute("id", "myModal");
                   var content =document.createElement("div");
                   content.classList.add('popup-content');
@@ -80,24 +60,75 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   var score=document.createElement('h1');
                   score.innerText="Brand Scores";
                   score.classList.add('title');
-                  var LaborScore=document.createElement('h2');
+
+                  //LaborScore
+                  var LS=document.createElement('div');
+                  LS.classList.add('ls');
+
+                  var LaborScore=document.createElement('span');
                   LaborScore.classList.add('score');
-                  console.log("ssss",resp[index]);
-                  LaborScore.innerText="LaborScore: " + resp[index].LaborScore;
-                  var EnvironmentScore=document.createElement('h3');
+                  LaborScore.innerText=resp.result[index].LaborScore;
+                  LaborScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+
+
+                  var LaborScoret=document.createElement('span');
+                  LaborScoret.classList.add('scoret');
+                  LaborScoret.innerText=" LaborScore "
+
+                  //EnvironmentScore
+                  var ES=document.createElement('div');
+                  ES.classList.add('es');
+
+                  var EnvironmentScore=document.createElement('span');
                   EnvironmentScore.classList.add('score');
-                  EnvironmentScore.innerText=" EnvironmentScore: " + resp[index].EnvironmentScore;
-                  var OverallScore=document.createElement('h4');
+                  EnvironmentScore.innerText=resp.result[index].EnvironmentScore;
+                  EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+
+
+                  var EnvironmentScoret=document.createElement('span');
+                  EnvironmentScoret.classList.add('scoret');
+                  EnvironmentScoret.innerText=" EnvironmentScore " ;
+
+                  //OverallScore
+                  var OS=document.createElement('div');
+                  OS.classList.add('os');
+
+                  var OverallScore=document.createElement('span');
                   OverallScore.classList.add('score');
-                  OverallScore.innerText= " OverallScore: " + resp[index].OverallScore;
+                  OverallScore.innerText=resp.result[index].OverallScore;
+                  OverallScore.style["background-color"] =resp.colourMap[resp.result[index].OverallScore];
+
+
+                  var OverallScoret=document.createElement('span');
+                  OverallScoret.classList.add('scoret');
+                  OverallScoret.innerText= " OverallScore ";
+
+                  //Link Page
+                  var brandpagelink ="https://wellspentethecal.herokuapp.com/#/Brand/"+brand[0];
+                  var brandpage=document.createElement('a');
+                  brandpage.setAttribute("href",brandpagelink);
+                  brandpage.setAttribute("target","_blank")
+                  brandpage.innerText="Click here for more detail";
+                  brandpage.classList.add('brandpage');
+
 
                   myModal.appendChild(content);
                   content.appendChild(span);
                   content.appendChild(score);
                   content.appendChild(header);
-                  content.appendChild(LaborScore);
-                  content.appendChild(EnvironmentScore);
-                  content.appendChild(OverallScore);
+
+                  LS.appendChild(LaborScore);
+                  LS.appendChild(LaborScoret);
+                  ES.appendChild(EnvironmentScore);
+                  ES.appendChild(EnvironmentScoret);
+                  OS.appendChild(OverallScore);
+                  OS.appendChild(OverallScoret);
+
+                  content.appendChild(LS);
+                  content.appendChild(ES);
+                  content.appendChild(OS);
+
+                  content.appendChild(brandpage);
 
                   document.body.appendChild(myModal);
                   myModal.style.display = "block";
@@ -110,9 +141,6 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                       myModal.style.display = "none";
                       }
                     }
-
-                //////////////////////////
-
             }
           });
       }})
