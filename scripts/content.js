@@ -3,7 +3,7 @@ let brands=[];
 let resp=[];
 let productNode;
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = `https://wellspentethecal.herokuapp.com/api/brands`;
+const url = `https://wellspent-ethical.herokuapp.com/api/brands`;
 
 
 var linksList = document.querySelectorAll("[id^=product-]");
@@ -119,7 +119,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   OverallScoret.innerText= " OverallScore ";
 
                   //Link Page
-                  var brandpagelink ="https://wellspentethecal.herokuapp.com/#/Brand/"+brand[0];
+                  var brandpagelink ="https://wellspent-ethical.herokuapp.com/#/Brand/"+brand[0];
                   var brandpage=document.createElement('a');
                   brandpage.setAttribute("href",brandpagelink);
                   brandpage.setAttribute("target","_blank")
