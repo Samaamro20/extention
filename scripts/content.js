@@ -10,7 +10,7 @@ var linksList = document.querySelectorAll("[id^=product-]");
 linksList.forEach(function(product) {
   const node = product.childNodes[0];
   const label = node.getAttribute("aria-label");
-  let brand = label.split(" ")[0];
+  let brand = label.toLowerCase();
   webbrands.push(brand);
   productNode=product;
 });
@@ -24,8 +24,9 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
     brands = resp;
     const finalResult = brands.result.map((data)=>{
     const result =   webbrands.filter((wellspentBrand)=>{
-        return wellspentBrand===data.BrandName
+        return wellspentBrand.includes(data.BrandName.toLowerCase())
       })
+      console.log("resoooo",result);
       return result;
     });
     const filteredBrand = Promise.all(finalResult)
@@ -35,8 +36,10 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
           linksList.forEach(function(product) {
             const node = product.childNodes[0];
             const label = node.getAttribute("aria-label");
-            let webbrand = label.split(" ")[0];
-            if(brand[0] === webbrand){
+            let webbrand = label.toLowerCase();
+            console.log("pessss",brand[0]);
+            console.log("webbrand",webbrand);
+            if(webbrand.includes(brand[0])){
                 product.style["border-color"] =resp.colourMap[resp.result[index].OverallScore];
                 product.classList.add('product');
                 var button = document.createElement("button");
@@ -58,7 +61,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   span.classList.add('end');
                   span.innerText="X";
                   var score=document.createElement('h1');
-                  score.innerText="Brand Scores";
+                  score.innerText="Brand Rates";
                   score.classList.add('title');
 
                   //LaborScore
@@ -73,7 +76,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 
                   var LaborScoret=document.createElement('span');
                   LaborScoret.classList.add('scoret');
-                  LaborScoret.innerText=" LaborScore "
+                  LaborScoret.innerText=" Labor Rate "
 
                   //TransparencyScore
                   var TS=document.createElement('div');
@@ -87,22 +90,33 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 
                   var TransparencyScoret=document.createElement('span');
                   TransparencyScoret.classList.add('scoret');
-                  TransparencyScoret.innerText=" TransparencyScore "
+                  TransparencyScoret.innerText=" Transparency Rate "
 
 
                   //EnvironmentScore
                   var ES=document.createElement('div');
                   ES.classList.add('es');
 
-                  var EnvironmentScore=document.createElement('span');
-                  EnvironmentScore.classList.add('score');
-                  EnvironmentScore.innerText=resp.result[index].EnvironmentScore;
-                  EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+
+                  if(resp.result[index].EnvironmentScore){
+                    var EnvironmentScore=document.createElement('span');
+                    EnvironmentScore.classList.add('score');
+                    EnvironmentScore.innerText=resp.result[index].EnvironmentScore;
+                    EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+
+                  }
+                  else{
+                    var EnvironmentScore=document.createElement('span');
+                    EnvironmentScore.classList.add('score');
+                    EnvironmentScore.innerText="TBD";
+                    EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+
+                  }
 
 
                   var EnvironmentScoret=document.createElement('span');
                   EnvironmentScoret.classList.add('scoret');
-                  EnvironmentScoret.innerText=" EnvironmentScore " ;
+                  EnvironmentScoret.innerText=" Environment Rate " ;
 
                   //OverallScore
                   var OS=document.createElement('div');
@@ -116,7 +130,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 
                   var OverallScoret=document.createElement('span');
                   OverallScoret.classList.add('scoret');
-                  OverallScoret.innerText= " OverallScore ";
+                  OverallScoret.innerText= " Overall Rate ";
 
                   //Link Page
                   var brandpagelink ="https://wellspent-ethical.herokuapp.com/#/Brand/"+brand[0];
