@@ -26,7 +26,6 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
     const result =   webbrands.filter((wellspentBrand)=>{
         return wellspentBrand.includes(data.BrandName.toLowerCase())
       })
-      console.log("resoooo",result);
       return result;
     });
     const filteredBrand = Promise.all(finalResult)
@@ -37,8 +36,6 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
             const node = product.childNodes[0];
             const label = node.getAttribute("aria-label");
             let webbrand = label.toLowerCase();
-            console.log("pessss",brand[0]);
-            console.log("webbrand",webbrand);
             if(webbrand.includes(brand[0])){
                 product.style["border-color"] =resp.colourMap[resp.result[index].OverallScore];
                 product.classList.add('product');
