@@ -22,9 +22,13 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
     resp = JSON.parse(contents);
     brands = resp;
 
+
     const finalResult = brands.result.map((data)=>{
     const result =   webBrands.filter((webBrand)=>{
+      const splitedBrand= data.BrandName.toLowerCase().split(" ")[0];
+      if(webBrand.indexOf(splitedBrand)==0){
         return webBrand.includes(data.BrandName.toLowerCase())
+      }
       })
       return result.length > 0 ? [data.BrandName.toLowerCase()] : [];
     });
