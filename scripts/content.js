@@ -64,7 +64,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   //LaborScore
                   var LS=document.createElement('div');
                   LS.classList.add('ls');
-                  
+
                   var LaborScore=document.createElement('span');
                   LaborScore.classList.add('score');
 
@@ -89,11 +89,11 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 
                   if(resp.result[index].TransparencyScore){
                   TransparencyScore.innerText=resp.result[index].TransparencyScore;
-                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].TransparencyScore];
                 }
                 else{
                   TransparencyScore.innerText="TBD";
-                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].TransparencyScore];
                 }
 
                   var TransparencyScoret=document.createElement('span');
