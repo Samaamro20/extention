@@ -30,7 +30,8 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
         return webBrand.includes(data.BrandName.toLowerCase())
       }
       })
-      return result.length > 0 ? [data.BrandName.toLowerCase()] : [];
+      return result.length > 0 ? [data.BrandName] : [];
+      // return result.length > 0 ? [data.BrandName.toLowerCase()] : [];
     });
     const filteredBrand = Promise.all(finalResult)
     .then((res)=>{
@@ -40,7 +41,8 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
             const node = product.childNodes[0];
             const label = node.getAttribute("aria-label");
             let productNodeText = label.toLowerCase();
-            if(productNodeText.includes(brand[0])){
+            if(productNodeText.includes(brand[0].toLowerCase())){
+            // if(productNodeText.includes(brand[0])){
                 product.style["border-color"] =resp.colourMap[resp.result[index].OverallScore];
                 product.classList.add('product');
                 var button = document.createElement("button");
