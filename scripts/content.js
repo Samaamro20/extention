@@ -1,6 +1,6 @@
 let webBrands = [];
 let brands=[];
-let resp=[];
+let resultbrands=[];
 let productNode;
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const url = `https://wellspent-ethical.herokuapp.com/api/brands`;
@@ -17,10 +17,10 @@ linksList.forEach(function(product) {
 
  // site that doesn’t send Access-Control-*
 fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-  .then(response => response.text())
+  .then(resultbrandsonse => resultbrandsonse.text())
   .then(contents => {
-    resp = JSON.parse(contents);
-    brands = resp;
+    resultbrands = JSON.parse(contents);
+    brands = resultbrands;
 
 
     const finalResult = brands.result.map((data)=>{
@@ -31,7 +31,6 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
       }
       })
       return result.length > 0 ? [data.BrandName] : [];
-      // return result.length > 0 ? [data.BrandName.toLowerCase()] : [];
     });
     const filteredBrand = Promise.all(finalResult)
     .then((res)=>{
@@ -42,8 +41,7 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
             const label = node.getAttribute("aria-label");
             let productNodeText = label.toLowerCase();
             if(productNodeText.includes(brand[0].toLowerCase())){
-            // if(productNodeText.includes(brand[0])){
-                product.style["border-color"] =resp.colourMap[resp.result[index].OverallScore];
+                product.style["border-color"] =resultbrands.colourMap[resultbrands.result[index].OverallScore];
                 product.classList.add('product');
                 var button = document.createElement("button");
                 button.innerText = "More information";
@@ -74,17 +72,17 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   var LaborScore=document.createElement('span');
                   LaborScore.classList.add('score');
 
-                  if(resp.result[index].LaborScore){
-                  LaborScore.innerText=resp.result[index].LaborScore;
-                  LaborScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+                  if(resultbrands.result[index].LaborScore){
+                  LaborScore.innerText=resultbrands.result[index].LaborScore;
+                  LaborScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].LaborScore];
                 }
                 else{
                   LaborScore.innerText="TBD";
-                  LaborScore.style["background-color"] =resp.colourMap[resp.result[index].LaborScore];
+                  LaborScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].LaborScore];
                 }
                   var LaborScoret=document.createElement('span');
                   LaborScoret.classList.add('scoret');
-                  LaborScoret.innerText=" Labor Rate "
+                  LaborScoret.innerText=" Labor Rating "
 
                   //TransparencyScore
                   var TS=document.createElement('div');
@@ -93,18 +91,18 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   var TransparencyScore=document.createElement('span');
                   TransparencyScore.classList.add('score');
 
-                  if(resp.result[index].TransparencyScore){
-                  TransparencyScore.innerText=resp.result[index].TransparencyScore;
-                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].TransparencyScore];
+                  if(resultbrands.result[index].TransparencyScore){
+                  TransparencyScore.innerText=resultbrands.result[index].TransparencyScore;
+                  TransparencyScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].TransparencyScore];
                 }
                 else{
                   TransparencyScore.innerText="TBD";
-                  TransparencyScore.style["background-color"] =resp.colourMap[resp.result[index].TransparencyScore];
+                  TransparencyScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].TransparencyScore];
                 }
 
                   var TransparencyScoret=document.createElement('span');
                   TransparencyScoret.classList.add('scoret');
-                  TransparencyScoret.innerText=" Transparency Rate "
+                  TransparencyScoret.innerText=" Transparency Rating "
 
 
                   //EnvironmentScore
@@ -114,21 +112,21 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   var EnvironmentScore=document.createElement('span');
                   EnvironmentScore.classList.add('score');
 
-                  if(resp.result[index].EnvironmentScore){
-                    EnvironmentScore.innerText=resp.result[index].EnvironmentScore;
-                    EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+                  if(resultbrands.result[index].EnvironmentScore){
+                    EnvironmentScore.innerText=resultbrands.result[index].EnvironmentScore;
+                    EnvironmentScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].EnvironmentScore];
 
                   }
                   else{
                     EnvironmentScore.innerText="TBD";
-                    EnvironmentScore.style["background-color"] =resp.colourMap[resp.result[index].EnvironmentScore];
+                    EnvironmentScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].EnvironmentScore];
 
                   }
 
 
                   var EnvironmentScoret=document.createElement('span');
                   EnvironmentScoret.classList.add('scoret');
-                  EnvironmentScoret.innerText=" Environment Rate " ;
+                  EnvironmentScoret.innerText=" Environment Rating " ;
 
                   //OverallScore
                   var OS=document.createElement('div');
@@ -137,18 +135,18 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                   var OverallScore=document.createElement('span');
                   OverallScore.classList.add('scoreo');
 
-                if(resp.result[index].OverallScore){
-                  OverallScore.innerText=resp.result[index].OverallScore;
-                  OverallScore.style["background-color"] =resp.colourMap[resp.result[index].OverallScore];
+                if(resultbrands.result[index].OverallScore){
+                  OverallScore.innerText=resultbrands.result[index].OverallScore;
+                  OverallScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].OverallScore];
                 }
                 else {
                   OverallScore.innerText="TBD";
-                  OverallScore.style["background-color"] =resp.colourMap[resp.result[index].OverallScore];
+                  OverallScore.style["background-color"] =resultbrands.colourMap[resultbrands.result[index].OverallScore];
                 }
 
                   var OverallScoret=document.createElement('span');
                   OverallScoret.classList.add('scoret');
-                  OverallScoret.innerText= " Overall Rate ";
+                  OverallScoret.innerText= " Overall Rating ";
 
                   //Link Page
                   var brandpagelink ="https://wellspent-ethical.herokuapp.com/#/Brand/"+brand[0];
@@ -198,5 +196,5 @@ fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
     });
   })
   .catch(() =>
-        console.log("Can’t access " + url + " response. Blocked by browser?")
+        console.log("Can’t access " + url + " resultbrandsonse. Blocked by browser?")
       );
